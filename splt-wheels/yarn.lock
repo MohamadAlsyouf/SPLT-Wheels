@@ -431,20 +431,6 @@
   resolved "https://registry.yarnpkg.com/@panva/hkdf/-/hkdf-1.2.1.tgz#cb0d111ef700136f4580349ff0226bf25c853f23"
   integrity sha512-6oclG6Y3PiDFcoyk8srjLfVKyMfVCKJ27JwNPViuXziFpmdz+MZnZN/aKY0JGXgYuO/VghU0jcOAZgWXZ1Dmrw==
 
-"@planetscale/database@^1.15.0", "@planetscale/database@^1.19.0":
-  version "1.19.0"
-  resolved "https://registry.yarnpkg.com/@planetscale/database/-/database-1.19.0.tgz#67aeb66dd67fa7f9235e7d7447e9de34e438e2da"
-  integrity sha512-Tv4jcFUFAFjOWrGSio49H6R2ijALv0ZzVBfJKIdm+kl9X046Fh4LLawrF9OMsglVbK6ukqMJsUCeucGAFTBcMA==
-
-"@prisma/adapter-planetscale@^6.5.0":
-  version "6.13.0"
-  resolved "https://registry.yarnpkg.com/@prisma/adapter-planetscale/-/adapter-planetscale-6.13.0.tgz#98480ad534525584aca90719d680b4455e050fb3"
-  integrity sha512-aMIweKwK3AoY0NWolPgWIgf8iDRuQo4V49KiT+utI/UtV5mxMscd5mZ1uPgg19FRoEjVSVZvrLeAstprQXIE0Q==
-  dependencies:
-    "@planetscale/database" "^1.15.0"
-    "@prisma/driver-adapter-utils" "6.13.0"
-    async-mutex "0.5.0"
-
 "@prisma/client@^6.5.0":
   version "6.13.0"
   resolved "https://registry.yarnpkg.com/@prisma/client/-/client-6.13.0.tgz#7073ab6ccf10c0c99ab7582e39aa7a1422c6a7db"
@@ -464,13 +450,6 @@
   version "6.13.0"
   resolved "https://registry.yarnpkg.com/@prisma/debug/-/debug-6.13.0.tgz#3d91b8a8be60c77f790c0ccaa4ef9d8713536c06"
   integrity sha512-um+9pfKJW0ihmM83id9FXGi5qEbVJ0Vxi1Gm0xpYsjwUBnw6s2LdPBbrsG9QXRX46K4CLWCTNvskXBup4i9hlw==
-
-"@prisma/driver-adapter-utils@6.13.0":
-  version "6.13.0"
-  resolved "https://registry.yarnpkg.com/@prisma/driver-adapter-utils/-/driver-adapter-utils-6.13.0.tgz#82919a93244076692899f2d0ea127b4518da7072"
-  integrity sha512-72gQS/rz0KRV1bvi37OGu5PgMAzTQplFZuTo1kSb4hK7sm0PTvl7+V4NFHdwXEUecTq/+FnF9Ts9Ac+iKPnEow==
-  dependencies:
-    "@prisma/debug" "6.13.0"
 
 "@prisma/engines-version@6.13.0-35.361e86d0ea4987e9f53a565309b3eed797a6bcbd":
   version "6.13.0-35.361e86d0ea4987e9f53a565309b3eed797a6bcbd"
@@ -1066,13 +1045,6 @@ async-function@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/async-function/-/async-function-1.0.0.tgz#509c9fca60eaf85034c6829838188e4e4c8ffb2b"
   integrity sha512-hsU18Ae8CDTR6Kgu9DYf0EbCr/a5iGL0rytQDobUcdpYOKokk8LEjVphnXkDkgpi0wYVsqrXuP0bZxJaTqdgoA==
-
-async-mutex@0.5.0:
-  version "0.5.0"
-  resolved "https://registry.yarnpkg.com/async-mutex/-/async-mutex-0.5.0.tgz#353c69a0b9e75250971a64ac203b0ebfddd75482"
-  integrity sha512-1A94B18jkJ3DYq284ohPxoXbfTA5HsQ7/Mf4DEhcyLx3Bz27Rh59iScbB6EPiP+B+joue6YCxcMXSbFC1tZKwA==
-  dependencies:
-    tslib "^2.4.0"
 
 available-typed-arrays@^1.0.7:
   version "1.0.7"

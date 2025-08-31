@@ -1,8 +1,5 @@
-import { PrismaAdapter } from "@auth/prisma-adapter";
 import { type DefaultSession, type NextAuthConfig } from "next-auth";
-import DiscordProvider from "next-auth/providers/discord";
-
-import { db } from "@/server/db";
+import CredentialsProvider from "next-auth/providers/credentials";
 
 /**
  * Module augmentation for `next-auth` types. Allows us to add custom properties to the `session`
@@ -25,6 +22,22 @@ declare module "next-auth" {
   // }
 }
 
+// Demo user credentials - in a real app, these would be stored in the database
+const demoUsers = [
+  {
+    id: "1",
+    email: "admin@example.com",
+    password: "admin123",
+    name: "Admin User",
+  },
+  {
+    id: "2",
+    email: "user@example.com",
+    password: "user123",
+    name: "Demo User",
+  },
+];
+
 /**
  * Options for NextAuth.js used to configure adapters, providers, callbacks, etc.
  *
@@ -32,7 +45,32 @@ declare module "next-auth" {
  */
 export const authConfig = {
   providers: [
-    DiscordProvider,
+    CredentialsProvider({
+      name: "credentials",
+      credentials: {
+        email: { label: "Email", type: "email" },
+        password: { label: "Password", type: "password" },
+      },
+      async authorize(credentials) {
+        if (!credentials?.email || !credentials?.password) {
+          return null;
+        }
+
+        // Find user by email
+        const user = demoUsers.find((u) => u.email === credentials.email);
+
+        // Check if user exists and password matches
+        if (user && user.password === credentials.password) {
+          return {
+            id: user.id,
+            email: user.email,
+            name: user.name,
+          };
+        }
+
+        return null;
+      },
+    }),
     /**
      * ...add more providers here.
      *
@@ -43,13 +81,24 @@ export const authConfig = {
      * @see https://next-auth.js.org/providers/github
      */
   ],
-  adapter: PrismaAdapter(db),
+  session: {
+    strategy: "jwt",
+  },
+  pages: {
+    signIn: "/signin",
+  },
   callbacks: {
-    session: ({ session, user }) => ({
+    jwt: ({ token, user }) => {
+      if (user) {
+        token.id = user.id;
+      }
+      return token;
+    },
+    session: ({ session, token }) => ({
       ...session,
       user: {
         ...session.user,
-        id: user.id,
+        id: token.id as string,
       },
     }),
   },
